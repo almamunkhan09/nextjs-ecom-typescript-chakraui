@@ -46,9 +46,6 @@ function Nav() {
           >
             <Button variant="nav"> {item} </Button>
           </Link>
-          // <Link key={item}>
-          //   <Button variant="nav"> {item} </Button>
-          // </Link>
         ))}
         <Link as={NextLink} href="/mycart">
           <ShoppingCartIcon />

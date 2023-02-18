@@ -1,8 +1,9 @@
 'use client';
-
+// Import navigation bar,footer from components directory
+import Footer from '@/Components/Footer';
 import Nav from '@/Components/Nav';
-// 1. import `ChakraProvider` component
-import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
+// Import
+import { ChakraProvider, ColorModeScript, Flex } from '@chakra-ui/react';
 import theme from './theme';
 
 export function ChakraUiWrapper({ children }: { children: React.ReactNode }) {
@@ -10,10 +11,11 @@ export function ChakraUiWrapper({ children }: { children: React.ReactNode }) {
   return (
     <ChakraProvider>
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-
-      <Nav />
-
-      {children}
+      <Flex maxW="100vw" height="100vh" direction="column">
+        <Nav />
+        {children}
+        <Footer />
+      </Flex>
     </ChakraProvider>
   );
 }
