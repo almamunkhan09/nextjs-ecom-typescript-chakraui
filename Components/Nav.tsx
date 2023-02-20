@@ -1,14 +1,5 @@
-import {
-  Button,
-  Flex,
-  Heading,
-  HStack,
-  Image,
-  Img,
-  Link,
-  Spacer,
-  useColorMode,
-} from '@chakra-ui/react';
+import { Button, Flex, Heading, HStack, Link, Spacer } from '@chakra-ui/react';
+import Image from 'next/image';
 import NextLink from 'next/link';
 import React from 'react';
 import DrakLightMode from './DrakLightMode';
@@ -23,9 +14,10 @@ function Nav() {
     <Flex w="100%" px="6" py="2" align="center" justify="space-between">
       <HStack>
         <Image
-          boxSize="50px"
-          borderRadius="full"
-          objectFit="cover"
+          width={50}
+          height={50}
+          // borderRadius="full"
+          // objectFit="cover"
           src="logoDark.svg"
           alt="logo"
         />
