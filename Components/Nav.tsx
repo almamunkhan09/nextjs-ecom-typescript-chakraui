@@ -36,7 +36,7 @@ function Nav() {
         {links.map((item) => (
           <Link
             textDecoration="none"
-            key={item}
+            key={`nav-${item}`}
             as={NextLink}
             href={`/${
               item === 'Home'

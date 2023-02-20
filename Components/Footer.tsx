@@ -11,7 +11,7 @@ function Footer() {
       py="2"
       align="center"
       justify="space-around"
-      marginTop={'auto'}
+      marginTop="auto"
     >
       <HStack>
         <Text>© {new Date().getFullYear()} KSTORE.All rights reserved</Text>

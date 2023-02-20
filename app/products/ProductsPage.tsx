@@ -13,7 +13,7 @@ import React from 'react';
 //   stock: number;
 // }[];
 
-function ProductPage(): React.ReactNode {
+function ProductsPage() {
   // const [productList, setProductlist] = React.useState<ProductsType | []>([]);
   // React.useEffect(() => setProductlist([...products]));
   return (
@@ -30,4 +30,4 @@ function ProductPage(): React.ReactNode {
   );
 }
 
-export default ProductPage;
+export default ProductsPage;

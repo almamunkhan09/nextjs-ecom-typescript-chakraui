@@ -14,25 +14,24 @@ import {
 } from '@chakra-ui/react';
 import React from 'react';
 
-type product = {
+type Product = {
   id: number;
   title: string;
-  y;
   price: number;
   description: string;
   image: string;
   stock: number;
 };
 
-export default function GenerateProductCard(singleProduct: product) {
+export default function GenerateProductCard(singleProduct: Product) {
   return (
-    <Card maxW="sm" key={singleProduct.id}>
+    <Card maxW="sm" key={`product-${singleProduct.id}`}>
       <CardBody>
         <AspectRatio maxW="sm" ratio={4 / 3}>
           <Image
             src={singleProduct.image}
             borderRadius="lg"
-            objectFit={'scale-down'}
+            objectFit="scale-down"
           />
         </AspectRatio>
 
