@@ -29,7 +29,7 @@ function Nav() {
           alt="logo"
         />
 
-        <Heading letterSpacing={2}> K STORE </Heading>
+        <Heading letterSpacing={2}> KSTORE </Heading>
       </HStack>
       <Spacer />
       <HStack as="nav" spacing="5">
