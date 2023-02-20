@@ -1,5 +1,5 @@
 'use client';
-import ImageBox from '@/Components/ImageBox';
+// import ImageBox from '@/Components/ImageBox';
 import ProductDetails from '@/Components/ProductDetails';
 import { products } from '@/products';
 import { Box, GridItem, Image, SimpleGrid } from '@chakra-ui/react';
