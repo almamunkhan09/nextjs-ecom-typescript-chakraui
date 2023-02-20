@@ -3,6 +3,7 @@ import {
   Flex,
   Heading,
   HStack,
+  Image,
   Img,
   Link,
   Spacer,
@@ -16,16 +17,16 @@ import ShoppingCartIcon from './ShoppingCartIcon';
 const links = ['Products', 'About Us', 'My Cart'];
 
 function Nav() {
-  const { colorMode } = useColorMode();
+  // const { colorMode } = useColorMode();
 
   return (
     <Flex w="100%" px="6" py="2" align="center" justify="space-between">
       <HStack>
-        <Img
+        <Image
           boxSize="50px"
-          borderRadius={1}
+          borderRadius="full"
           objectFit="cover"
-          src={colorMode === 'dark' ? 'logoDark.svg' : 'logoLight.svg'}
+          src="logoDark.svg"
           alt="logo"
         />
 

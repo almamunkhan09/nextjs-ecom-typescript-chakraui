@@ -2,6 +2,10 @@
 import { Box, Image } from '@chakra-ui/react';
 import React from 'react';
 
+interface ProductId {
+  productId: number;
+}
+
 function ImageBox() {
   return (
     <Box>

@@ -1,23 +1,31 @@
 'use client';
-import { AddIcon, ArrowForwardIcon, MinusIcon } from '@chakra-ui/icons';
+import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import {
-  Box,
   Button,
   ButtonGroup,
-  Center,
   Heading,
   IconButton,
-  Image,
   Stack,
   Text,
   VStack,
 } from '@chakra-ui/react';
 import React from 'react';
 
-function ProductDetails() {
+interface Product {
+  singleProduct: {
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    image: string;
+    stock: number;
+  };
+}
+
+function ProductDetails({ singleProduct }: Product) {
   return (
     <VStack justifyContent="start" borderLeft={{ md: 'solid 1px' }} p={5}>
-      <Heading> Product Title</Heading>
+      <Heading> {singleProduct.title}</Heading>
       <Text maxW="sm" textAlign="justify">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad vero
         laboriosam repudiandae et optio quae rerum dolorum aliquam porro,
@@ -26,7 +34,7 @@ function ProductDetails() {
       </Text>
       <Stack justifySelf="start">
         <Heading variant="h6" mt={2}>
-          $Price
+          ${singleProduct.price}
         </Heading>
       </Stack>
 
