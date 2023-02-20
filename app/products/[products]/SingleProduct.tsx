@@ -2,7 +2,7 @@
 // import ImageBox from '@/Components/ImageBox';
 import ProductDetails from '@/Components/ProductDetails';
 import { products } from '@/products';
-import { Box, GridItem, Image, SimpleGrid } from '@chakra-ui/react';
+import { Box, GridItem, Img, SimpleGrid } from '@chakra-ui/react';
 
 // import React, { useEffect, useState } from 'react';
 
@@ -36,11 +36,7 @@ function SingleProduct({ productId }: ProductId) {
     >
       <GridItem colSpan={1} display="flex" justifyContent="center">
         <Box>
-          <Image
-            src={singleProduct.image}
-            alt="Dan Abramov"
-            borderRadius="5px"
-          />
+          <Img src={singleProduct.image} alt="Dan Abramov" borderRadius="5px" />
         </Box>
       </GridItem>
       <GridItem colSpan={1} justifyContent="center" alignItems="center">
