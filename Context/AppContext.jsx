@@ -6,13 +6,15 @@ const productInCookie = Cookies.get('myCart')
   ? JSON.parse(Cookies.get('myCart'))
   : [];
 
-const cartContext = createContext({
+export const cartContext = createContext({
   items: [],
   getProductQuantity: () => {},
   addOneToCart: () => {},
+  addToCart: () => {},
   removeOneFromCart: () => {},
   deleteFromCart: () => {},
   getTotalPrice: () => {},
+  getNumberOfItems: () => {},
 });
 
 export default function CartProvider({ children }) {
@@ -47,6 +49,25 @@ export default function CartProvider({ children }) {
       );
     }
   }
+  function addToCart(id, number) {
+    const quantity = getProductQuantity(id);
+
+    if (quantity === 0) {
+      setCartProducts([
+        ...cartProducts,
+        {
+          id: id,
+          quantity: number,
+        },
+      ]);
+    } else {
+      setCartProducts(
+        cartProducts.map((product) =>
+          product.id === id ? { ...product, quantity: number } : product,
+        ),
+      );
+    }
+  }
   function deleteOneFromCart(id) {
     setCartProducts((preValue) =>
       preValue.filter((product) => !product.id === id),
@@ -75,13 +96,28 @@ export default function CartProvider({ children }) {
       return (totalPrice += productdata.price * cartItem.quantity);
     });
   }
+  function getNumberOfItems() {
+    const initialValue = 0;
+    let totalItems = 0;
+    console.log(cartProducts);
+    if (cartProducts.length > 0) {
+      totalItems = cartProducts.reduce(
+        (accumulator, product) => accumulator + product.quantity,
+        initialValue,
+      );
+    }
+    console.log(totalItems);
+    return totalItems;
+  }
   const contextValue = {
     items: cartProducts,
     getProductQuantity,
     addOneToCart,
+    addToCart,
     removeOneFromCart,
     deleteOneFromCart,
     getTotalPrice,
+    getNumberOfItems,
   };
   return (
     <cartContext.Provider value={contextValue}>{children}</cartContext.Provider>
