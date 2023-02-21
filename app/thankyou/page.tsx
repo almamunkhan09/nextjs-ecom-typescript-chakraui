@@ -1,5 +1,5 @@
 import React from 'react';
-import ThankYou from './ThankYou';
+import ThankYou from '../../Components/ThankYou';
 
 function page() {
   return <ThankYou />;

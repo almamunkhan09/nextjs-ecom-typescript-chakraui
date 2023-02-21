@@ -2,27 +2,30 @@
 // import ImageBox from '@/Components/ImageBox';
 import ProductDetails from '@/Components/ProductDetails';
 import { products } from '@/products';
-import { Box, GridItem, Img, SimpleGrid } from '@chakra-ui/react';
+import { Box, GridItem, Image, SimpleGrid } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 
 // import React, { useEffect, useState } from 'react';
 
-// type Product = {
-//   product: {
-//     id: number;
-//     title: string;
-//     price: number;
-//     description: string;
-//     image: string;
-//     stock: number;
-//   };
-// };
+type Product = {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  image: string;
+  stock: number;
+};
 
 interface ProductId {
   productId: number;
 }
 
 function SingleProduct({ productId }: ProductId) {
-  const singleProduct = products[productId];
+  const [singleProduct, setSingleProduct] = useState<Product | null>(null);
+  useEffect(() => {
+    setSingleProduct(() => products[productId]);
+  }, []);
+  if (!singleProduct) return <div> </div>;
   return (
     <SimpleGrid
       maxW="4xl"
@@ -36,7 +39,12 @@ function SingleProduct({ productId }: ProductId) {
     >
       <GridItem colSpan={1} display="flex" justifyContent="center">
         <Box>
-          <Img src={singleProduct.image} alt="Dan Abramov" borderRadius="5px" />
+          <Image
+            maxW="sm"
+            src={singleProduct.image}
+            alt="Dan Abramov"
+            borderRadius="5px"
+          />
         </Box>
       </GridItem>
       <GridItem colSpan={1} justifyContent="center" alignItems="center">

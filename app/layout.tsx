@@ -1,5 +1,5 @@
 import './globals.css';
-import { ChakraUiWrapper } from './ChakraUiWrapper';
+import { ChakraUiWrapper } from '../Components/ChakraUiWrapper';
 
 export default function RootLayout({
   children,

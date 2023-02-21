@@ -1,5 +1,5 @@
 import React from 'react';
-import SingleProduct from './SingleProduct';
+import SingleProduct from '../../../Components/SingleProduct';
 
 interface Params {
   params: {

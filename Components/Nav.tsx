@@ -1,5 +1,5 @@
 import { Button, Flex, Heading, HStack, Link, Spacer } from '@chakra-ui/react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import NextLink from 'next/link';
 import React from 'react';
 import DrakLightMode from './DrakLightMode';
@@ -13,14 +13,14 @@ function Nav() {
   return (
     <Flex w="100%" px="6" py="2" align="center" justify="space-between">
       <HStack>
-        <Image
+        {/* <Image
           width={50}
           height={50}
           // borderRadius="full"
           // objectFit="cover"
           src="logoDark.svg"
           alt="logo"
-        />
+        /> */}
 
         <Heading letterSpacing={2}> KSTORE </Heading>
       </HStack>
