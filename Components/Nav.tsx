@@ -24,7 +24,7 @@ function Nav() {
         <Image
           width={50}
           height={50}
-          // borderRadius="full"
+          borderRadius="full"
           // objectFit="cover"
           src="logoDark.svg"
           alt="logo"
