@@ -1,6 +1,6 @@
 import { cartContext } from '@/Context/AppContext';
 import { Badge, Box, IconButton } from '@chakra-ui/react';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { MdAddShoppingCart } from 'react-icons/md';
 
 function ShoppingCartIcon() {
@@ -8,7 +8,7 @@ function ShoppingCartIcon() {
   const [numberOfItems, setNumberOfItems] = React.useState<any>(0);
   React.useEffect(() => {
     setNumberOfItems(cart.getNumberOfItems());
-  }, []);
+  }, [cart]);
   return (
     <IconButton
       py="1"

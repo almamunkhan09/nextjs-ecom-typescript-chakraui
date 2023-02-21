@@ -24,7 +24,7 @@ function SingleProduct({ productId }: ProductId) {
   const [singleProduct, setSingleProduct] = useState<Product | null>(null);
   useEffect(() => {
     setSingleProduct(() => products[productId]);
-  }, []);
+  }, [productId]);
   if (!singleProduct) return <div> </div>;
   return (
     <SimpleGrid
