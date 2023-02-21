@@ -5,7 +5,7 @@ import { MdAddShoppingCart } from 'react-icons/md';
 
 function ShoppingCartIcon() {
   const cart = useContext(cartContext);
-  const [numberOfItems, setNumberOfItems] = React.useState<any>(0);
+  const [numberOfItems, setNumberOfItems] = React.useState<any>(0); // Need to change both here and context Api also
   React.useEffect(() => {
     setNumberOfItems(cart.getNumberOfItems());
   }, [cart]);

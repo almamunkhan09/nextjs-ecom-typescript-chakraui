@@ -1,9 +1,10 @@
 'use client';
 // import ImageBox from '@/Components/ImageBox';
 import ProductDetails from '@/Components/ProductDetails';
+import { cartContext } from '@/Context/AppContext';
 import { products } from '@/products';
 import { Box, GridItem, Image, SimpleGrid } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 // import React, { useEffect, useState } from 'react';
 
@@ -22,6 +23,12 @@ interface ProductId {
 
 function SingleProduct({ productId }: ProductId) {
   const [singleProduct, setSingleProduct] = useState<Product | null>(null);
+
+  // const [numberOfItems, setNumberOfItems] = React.useState<any>(0); // Need to change both here and context Api also
+  // React.useEffect(() => {
+  //   setNumberOfItems(cart.getNumberOfItems());
+  // }, [cart]);
+
   useEffect(() => {
     setSingleProduct(() => products[productId]);
   }, [productId]);

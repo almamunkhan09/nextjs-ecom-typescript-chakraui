@@ -31,6 +31,7 @@ export default function GenerateProductCard(singleProduct: Product) {
       as={NextLink}
       key={`product-${singleProduct.id}`}
       href={`/products/${singleProduct.id}`}
+      textDecoration="none"
     >
       <Card maxW="sm">
         <CardBody>

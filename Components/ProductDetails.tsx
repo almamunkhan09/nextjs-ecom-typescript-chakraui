@@ -1,4 +1,5 @@
 'use client';
+import { cartContext } from '@/Context/AppContext';
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import {
   Button,
@@ -23,6 +24,20 @@ interface Product {
 }
 
 function ProductDetails({ singleProduct }: Product) {
+  const cart = React.useContext(cartContext);
+  const addToCart = cart.addToCart;
+  const [count, setCount] = React.useState<number>(1);
+  const countIncrement = (): void => {
+    if (count < singleProduct.stock) {
+      setCount((preValue) => preValue + 1);
+    } else {
+      alert(`Only ${count} is Available instock`);
+    }
+  };
+  const countDecrement = (): void => {
+    setCount((preValue) => (preValue > 1 ? preValue - 1 : preValue));
+  };
+
   return (
     <VStack justifyContent="start" borderLeft={{ md: 'solid 1px' }} p={5}>
       <Heading> {singleProduct.title}</Heading>
@@ -36,6 +51,7 @@ function ProductDetails({ singleProduct }: Product) {
         <Heading variant="h6" mt={2}>
           ${singleProduct.price}
         </Heading>
+        <Text>500 Gram</Text>
       </Stack>
 
       <ButtonGroup spacing={2} alignItems="center">
@@ -43,19 +59,20 @@ function ProductDetails({ singleProduct }: Product) {
           <IconButton
             aria-label="Add"
             icon={<MinusIcon />}
-            // onClick={countDecrement}
+            onClick={countDecrement}
           />
 
-          <Button>{12}</Button>
+          <Button>{count}</Button>
           <IconButton
             aria-label="Add to friends"
             icon={<AddIcon />}
-            // onClick={countIncrement}
+            onClick={countIncrement}
           />
         </ButtonGroup>
         <Button
           variant="solid"
           colorScheme="blue"
+          onClick={() => addToCart(singleProduct.id, count)}
           // onClick={(e) => {
           //   e.preventDefault();
           //   clickHandler(
