@@ -73,7 +73,7 @@ function ProductDetails({ singleProduct }: Product) {
           colorScheme="blue"
           onClick={() => {
             // @ts-ignore
-            cart.addToCart(singleProduct.id, count); // there is a type error to fix letter
+            cart.addToCart(singleProduct, count); // there is a type error to fix letter
           }}
           // onClick={(e) => {
           //   e.preventDefault();

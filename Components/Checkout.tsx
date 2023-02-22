@@ -16,6 +16,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -35,6 +36,8 @@ type Inputs = {
 };
 
 function Checkout() {
+  const router = useRouter();
+
   const schema = yup.object().shape({
     firstName: yup.string().required(),
     lastName: yup.string().required(),
@@ -74,8 +77,10 @@ function Checkout() {
   } = useForm<Inputs>({
     resolver: yupResolver(schema),
   });
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = () => {
+    // console.log(data);
+    router.push('/thankyou');
+
     reset();
   };
   return (

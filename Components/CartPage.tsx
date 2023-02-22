@@ -3,6 +3,7 @@ import { cartContext } from '@/Context/AppContext';
 import { DeleteIcon } from '@chakra-ui/icons';
 import {
   AspectRatio,
+  Button,
   Center,
   Container,
   Divider,
@@ -14,15 +15,29 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
 import { useContext, useEffect, useState } from 'react';
 
+type CartType = {
+  id: number;
+  title: string;
+  price: number;
+  quantity: number;
+  image: string;
+}[];
+
 const CartPage = () => {
+  const router = useRouter();
+
   const cart = useContext(cartContext);
+  const [cartItems, setCartItems] = useState<CartType | null>(null);
+
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
   useEffect(() => {
     // @ts-ignore
-    return setTotalPrice(cart.getTotalPrice()); // type error Here need to fix later
+    setTotalPrice(cart.getTotalPrice()); // type error Here need to fix later
+    setCartItems(cart.items);
   }, [cart]);
 
   return (
@@ -45,38 +60,67 @@ const CartPage = () => {
         <Center>
           <Heading size="2xl">Your cart</Heading>
         </Center>
-        <HStack spacing={3} alignItems="center" w="full">
-          <Hide below="md">
-            <AspectRatio ratio={4 / 3} w={20}>
-              <Image
-                borderRadius="5px"
-                src="https://images.unsplash.com/photo-1667185487460-b303881b2bb9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY3Njg0NzY0Nw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080"
-                alt="Skateboard"
-              />
-            </AspectRatio>
-          </Hide>
 
-          <Heading size={{ sm: 'sm', md: 'md' }}>Item Title</Heading>
-          <HStack spacing={2}>
-            <Text fontWeight="bold" ml="auto">
-              2
-            </Text>
-            <Text fontWeight="bold">
-              <span>&#215;</span>
-            </Text>
-            <Text fontWeight="bold">$4</Text>
-          </HStack>
-          <Spacer />
-          <Heading size="sm" textAlign="end">
-            $119.00
-          </Heading>
-          <DeleteIcon />
-        </HStack>
+        {
+          // @ts-ignore
+          cartItems?.length > 0 &&
+            // @ts-ignore
+            cartItems.map((eachItem) => {
+              return (
+                <HStack
+                  spacing={3}
+                  key={`productId-${eachItem.id}`}
+                  alignItems="center"
+                  w="full"
+                >
+                  <Hide below="md">
+                    <AspectRatio ratio={4 / 3} w={20}>
+                      <Image
+                        borderRadius="5px"
+                        src={eachItem.image}
+                        alt={eachItem.title}
+                      />
+                    </AspectRatio>
+                  </Hide>
+
+                  <Heading size={{ sm: 'sm', md: 'md' }}>
+                    {eachItem.title}
+                  </Heading>
+
+                  <Spacer />
+                  <HStack spacing={2}>
+                    <Text fontWeight="bold" ml={5}>
+                      {eachItem.quantity}
+                    </Text>
+                    <Text fontWeight="bold">
+                      <span>&#215;</span>
+                    </Text>
+                    <Text fontWeight="bold">${eachItem.price}</Text>
+                  </HStack>
+                  <Heading size="sm" textAlign="end">
+                    $ {(eachItem.price * eachItem.quantity).toFixed(2)}
+                  </Heading>
+                  <DeleteIcon />
+                </HStack>
+              );
+            })
+        }
+
         <Divider />
         <HStack justifyContent="space-between" w="full">
-          <Text color="gray.600">Total</Text>
-          <Heading size="lg">{totalPrice}</Heading>
+          <Text>Total</Text>
+          <Heading size="lg">{totalPrice.toFixed(2)}</Heading>
         </HStack>
+        <Button
+          size="lg"
+          mt={4}
+          colorScheme="teal"
+          // isLoading={props.isSubmitting}
+          type="submit"
+          onClick={() => router.push('/checkout')}
+        >
+          Check Out
+        </Button>
       </VStack>
     </Container>
   );
