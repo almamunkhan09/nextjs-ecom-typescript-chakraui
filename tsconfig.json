@@ -30,7 +30,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next.config.js",
-    "**/*.js"
+    "**/*.js",
+    "app/checkout/page.tsx",
+    "Context/AppContext.jsx"
   ],
   "exclude": ["node_modules"]
 }

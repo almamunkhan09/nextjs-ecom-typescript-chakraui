@@ -1,7 +1,8 @@
+import AboutUs from '@/Components/AboutUs';
 import React from 'react';
 
 function page() {
-  return <div>page</div>;
+  return <AboutUs />;
 }
 
 export default page;
