@@ -13,9 +13,10 @@ function ShoppingCartIcon() {
     <IconButton
       py="1"
       aria-label="Notifications"
+      size="sm"
       icon={
         <>
-          <MdAddShoppingCart size="1.5rem" />
+          <MdAddShoppingCart size="1rem" />
           <Box
             as="span" // need to give here the attribute
             position="absolute"

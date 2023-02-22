@@ -1,8 +1,8 @@
 'use client';
 import { cartContext } from '@/Context/AppContext';
+import { DeleteIcon } from '@chakra-ui/icons';
 import {
   AspectRatio,
-  Button,
   Center,
   Container,
   Divider,
@@ -70,7 +70,7 @@ const CartPage = () => {
           <Heading size="sm" textAlign="end">
             $119.00
           </Heading>
-          <Button> Delete</Button>
+          <DeleteIcon />
         </HStack>
         <Divider />
         <HStack justifyContent="space-between" w="full">

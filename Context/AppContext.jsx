@@ -115,14 +115,12 @@ export default function CartProvider({ children }) {
   function getNumberOfItems() {
     const initialValue = 0;
     let totalItems = 0;
-    console.log(cartProducts);
     if (cartProducts.length > 0) {
       totalItems = cartProducts.reduce(
         (accumulator, product) => accumulator + product.quantity,
         initialValue,
       );
     }
-    console.log(totalItems);
     return totalItems;
   }
   const contextValue = {
