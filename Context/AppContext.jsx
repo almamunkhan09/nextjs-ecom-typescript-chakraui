@@ -105,9 +105,12 @@ export default function CartProvider({ children }) {
   function getTotalPrice() {
     let totalPrice = 0;
     cartProducts.map((cartItem) => {
-      const productdata = products.map((product) => product.id === cartItem.id);
-      return (totalPrice += productdata.price * cartItem.quantity);
+      const productdata = products.filter(
+        (product) => product.id === cartItem.id,
+      );
+      return (totalPrice += productdata[0].price * cartItem.quantity);
     });
+    return totalPrice;
   }
   function getNumberOfItems() {
     const initialValue = 0;
