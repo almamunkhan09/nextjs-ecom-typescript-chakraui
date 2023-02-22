@@ -25,7 +25,6 @@ interface Product {
 
 function ProductDetails({ singleProduct }: Product) {
   const cart = React.useContext(cartContext);
-  const addToCart = cart.addToCart;
   const [count, setCount] = React.useState<number>(1);
   const countIncrement = (): void => {
     if (count < singleProduct.stock) {
@@ -72,7 +71,10 @@ function ProductDetails({ singleProduct }: Product) {
         <Button
           variant="solid"
           colorScheme="blue"
-          onClick={() => addToCart(singleProduct.id, count)}
+          onClick={() => {
+            // @ts-ignore
+            cart.addToCart(singleProduct.id, count); // there is a type error to fix letter
+          }}
           // onClick={(e) => {
           //   e.preventDefault();
           //   clickHandler(
