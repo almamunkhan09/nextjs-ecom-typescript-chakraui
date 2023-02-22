@@ -23,7 +23,7 @@ export const cartContext = createContext({
   // addOneToCart: () => {},
   addToCart: () => {},
   removeOneFromCart: () => {},
-  deleteFromCart: () => {},
+  deleteOneFromCart: () => {},
   getTotalPrice: () => {},
   getNumberOfItems: () => {},
 });
@@ -79,17 +79,19 @@ export default function CartProvider({ children }) {
       setCartProducts(newCart);
       Cookies.set('myCart', JSON.stringify(newCart));
     } else {
-      const newCart = cartProducts.map((product) =>
-        product.id === id ? { ...product, quantity: number } : product,
+      const newCart = cartProducts.map((eachProduct) =>
+        eachProduct.id === product.id
+          ? { ...eachProduct, quantity: number }
+          : eachProduct,
       );
       setCartProducts(newCart);
       Cookies.set('myCart', JSON.stringify(newCart));
     }
   }
   function deleteOneFromCart(id) {
-    setCartProducts((preValue) =>
-      preValue.filter((product) => !product.id === id),
-    );
+    const newCart = cartProducts.filter((product) => !(product.id === id));
+    setCartProducts(newCart);
+    Cookies.set('myCart', JSON.stringify(newCart));
   }
 
   function removeOneFromCart(id) {

@@ -100,7 +100,13 @@ const CartPage = () => {
                   <Heading size="sm" textAlign="end">
                     $ {(eachItem.price * eachItem.quantity).toFixed(2)}
                   </Heading>
-                  <DeleteIcon />
+                  <DeleteIcon
+                    onClick={() => {
+                      // @ts-ignore
+                      console.log('id', eachItem.id);
+                      cart.deleteOneFromCart(eachItem.id);
+                    }}
+                  />
                 </HStack>
               );
             })
