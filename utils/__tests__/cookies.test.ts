@@ -5,7 +5,7 @@ import {
   stringifyCookieValue,
 } from '../cookies';
 
-test('Stringy the cookie value', () => {
+test('Stringify the cookie value', () => {
   expect(
     stringifyCookieValue([
       { id: 1, quantity: 3 },
