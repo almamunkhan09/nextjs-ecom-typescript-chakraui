@@ -2,6 +2,7 @@ import {
   Button,
   Flex,
   Heading,
+  Hide,
   HStack,
   Image,
   Link,
@@ -33,21 +34,25 @@ function Nav() {
         <Heading letterSpacing={2}> KSTORE </Heading>
       </HStack>
       <Spacer />
+
       <HStack as="nav" spacing="5">
-        {links.map((item) => (
-          <Link
-            textDecoration="none"
-            key={`nav-${item}`}
-            as={NextLink}
-            href={`/${
-              item === 'Home'
-                ? '/'
-                : item.toLocaleLowerCase().split(' ').join('')
-            }`}
-          >
-            <Button variant="nav"> {item} </Button>
-          </Link>
-        ))}
+        <Hide below="md">
+          {links.map((item) => (
+            <Link
+              textDecoration="none"
+              key={`nav-${item}`}
+              as={NextLink}
+              href={`/${
+                item === 'Home'
+                  ? '/'
+                  : item.toLocaleLowerCase().split(' ').join('')
+              }`}
+            >
+              <Button variant="nav"> {item} </Button>
+            </Link>
+          ))}
+        </Hide>
+
         <Link as={NextLink} href="/mycart">
           <ShoppingCartIcon />
         </Link>

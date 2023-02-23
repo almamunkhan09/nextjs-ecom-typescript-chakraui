@@ -23,7 +23,7 @@ export const cartContext = createContext({
   // addOneToCart: () => {},
   addToCart: () => {},
   removeOneFromCart: () => {},
-  deleteFromCart: () => {},
+  deleteOneFromCart: () => {},
   getTotalPrice: () => {},
   getNumberOfItems: () => {},
 });
@@ -32,7 +32,9 @@ export default function CartProvider({ children }) {
   const [cartProducts, setCartProducts] = useState(productInCookie);
 
   function getProductQuantity(id) {
-    const quantity = cartProducts.find((product) => product.id == id)?.quantity;
+    const quantity = cartProducts.find(
+      (product) => product.id === id,
+    )?.quantity;
     if (quantity === undefined) {
       return 0;
     }
@@ -60,31 +62,36 @@ export default function CartProvider({ children }) {
   //     );
   //   }
   // }
-  function addToCart(id, number) {
-    const quantity = getProductQuantity(id);
+  function addToCart(product, number) {
+    const quantity = getProductQuantity(product.id);
 
     if (quantity === 0) {
       const newCart = [
         ...cartProducts,
         {
-          id: id,
+          id: product.id,
+          title: product.title,
+          price: product.price,
+          image: product.image,
           quantity: number,
         },
       ];
       setCartProducts(newCart);
       Cookies.set('myCart', JSON.stringify(newCart));
     } else {
-      const newCart = cartProducts.map((product) =>
-        product.id === id ? { ...product, quantity: number } : product,
+      const newCart = cartProducts.map((eachProduct) =>
+        eachProduct.id === product.id
+          ? { ...eachProduct, quantity: number }
+          : eachProduct,
       );
       setCartProducts(newCart);
       Cookies.set('myCart', JSON.stringify(newCart));
     }
   }
   function deleteOneFromCart(id) {
-    setCartProducts((preValue) =>
-      preValue.filter((product) => !product.id === id),
-    );
+    const newCart = cartProducts.filter((product) => !(product.id === id));
+    setCartProducts(newCart);
+    Cookies.set('myCart', JSON.stringify(newCart));
   }
 
   function removeOneFromCart(id) {
@@ -105,21 +112,22 @@ export default function CartProvider({ children }) {
   function getTotalPrice() {
     let totalPrice = 0;
     cartProducts.map((cartItem) => {
-      const productdata = products.map((product) => product.id === cartItem.id);
-      return (totalPrice += productdata.price * cartItem.quantity);
+      const productdata = products.filter(
+        (product) => product.id === cartItem.id,
+      );
+      return (totalPrice += productdata[0].price * cartItem.quantity);
     });
+    return totalPrice;
   }
   function getNumberOfItems() {
     const initialValue = 0;
     let totalItems = 0;
-    console.log(cartProducts);
     if (cartProducts.length > 0) {
       totalItems = cartProducts.reduce(
         (accumulator, product) => accumulator + product.quantity,
         initialValue,
       );
     }
-    console.log(totalItems);
     return totalItems;
   }
   const contextValue = {

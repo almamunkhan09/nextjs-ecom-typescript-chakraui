@@ -9,12 +9,12 @@ function DrakLightMode() {
     <IconButton
       variant="outline"
       aria-label="dark-mode"
-      // fontSize="20px"
+      size="sm"
       icon={
         colorMode === 'light' ? (
-          <MdOutlineLightMode size="2rem" />
+          <MdOutlineLightMode size="1rem" />
         ) : (
-          <MdDarkMode size="2rem" />
+          <MdDarkMode size="1rem" />
         )
       }
       onClick={() => {
