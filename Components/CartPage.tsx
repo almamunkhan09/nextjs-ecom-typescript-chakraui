@@ -103,8 +103,7 @@ const CartPage = () => {
                   <DeleteIcon
                     onClick={() => {
                       // @ts-ignore
-                      console.log('id', eachItem.id);
-                      cart.deleteOneFromCart(eachItem.id);
+                      cart.deleteOneFromCart(eachItem.id); // Need a type fixation
                     }}
                   />
                 </HStack>
