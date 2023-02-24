@@ -3,6 +3,11 @@ export const rootNotFoundMetadata = {
   description: "sorry can't find the page you are looking for",
 };
 
-export default function RootNotFound() {
-  return <div>Sorry this page was not found</div>;
+export default function NotFound() {
+  return (
+    <>
+      <h2>Not Found</h2>
+      <p>Could not find requested resource</p>
+    </>
+  );
 }
