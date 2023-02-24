@@ -24,7 +24,8 @@ function SingleProduct({ productId }: ProductId) {
   const [singleProduct, setSingleProduct] = useState<Product | null>(null);
 
   useEffect(() => {
-    setSingleProduct(() => products[productId]);
+    const newProduct = products.filter((product) => product.id === productId);
+    setSingleProduct(newProduct[0]);
   }, [productId]);
   if (!singleProduct) return <div> </div>;
   return (

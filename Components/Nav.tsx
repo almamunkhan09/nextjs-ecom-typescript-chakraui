@@ -20,7 +20,14 @@ function Nav() {
   // const { colorMode } = useColorMode();
 
   return (
-    <Flex w="100%" px="6" py="2" align="center" justify="space-between">
+    <Flex
+      w="100%"
+      px="6"
+      py="2"
+      align="center"
+      justify="space-between"
+      as="header"
+    >
       <HStack>
         <Image
           width={50}
@@ -42,6 +49,7 @@ function Nav() {
               textDecoration="none"
               key={`nav-${item}`}
               as={NextLink}
+              data-test-id={`${item.toLocaleLowerCase()}-link`}
               href={`/${
                 item === 'Home'
                   ? '/'
