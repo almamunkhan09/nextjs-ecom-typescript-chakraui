@@ -28,7 +28,7 @@ jobs:
       - run: yarn
       - run: npm yarn build
 
-  build:
+  test:
     runs-on: ubuntu-latest
 
     strategy:
