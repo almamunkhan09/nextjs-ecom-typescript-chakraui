@@ -32,7 +32,8 @@
     "next.config.js",
     "**/*.js",
     "app/checkout/page.tsx",
-    "Context/AppContext.jsx"
+    "Context/AppContext.jsx",
+    "data.mjs"
   ],
   "exclude": ["node_modules"]
 }
