@@ -48,7 +48,7 @@ export default function GenerateProductCard(singleProduct: Product) {
             <Heading size="md">{singleProduct.title}</Heading>
 
             <Text color="blue.600" fontSize="2xl">
-              ${singleProduct.price}
+              {singleProduct.price}
             </Text>
           </Stack>
         </CardBody>
