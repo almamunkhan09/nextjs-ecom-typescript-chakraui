@@ -1,5 +1,6 @@
 import {
   Button,
+  Divider,
   Flex,
   Heading,
   Hide,
@@ -7,6 +8,7 @@ import {
   Image,
   Link,
   Spacer,
+  VStack,
 } from '@chakra-ui/react';
 // import Image from 'next/image';
 import NextLink from 'next/link';
@@ -20,53 +22,56 @@ function Nav() {
   // const { colorMode } = useColorMode();
 
   return (
-    <Flex
-      w="100%"
-      px="6"
-      py="2"
-      align="center"
-      justify="space-between"
-      as="header"
-    >
-      <HStack>
-        <Image
-          width={50}
-          height={50}
-          borderRadius="full"
-          // objectFit="cover"
-          src="logoDark.svg"
-          alt="logo"
-        />
+    <VStack>
+      <Flex
+        w="100%"
+        px="6"
+        py="2"
+        align="center"
+        justify="space-between"
+        as="header"
+      >
+        <HStack>
+          <Image
+            width={50}
+            height={50}
+            borderRadius="full"
+            // objectFit="cover"
+            src="logoDark.svg"
+            alt="logo"
+          />
 
-        <Heading letterSpacing={2}> KSTORE </Heading>
-      </HStack>
-      <Spacer />
+          <Heading letterSpacing={2}> KSTORE </Heading>
+        </HStack>
+        <Spacer />
 
-      <HStack as="nav" spacing="5">
-        <Hide below="md">
-          {links.map((item) => (
-            <Link
-              textDecoration="none"
-              key={`nav-${item}`}
-              as={NextLink}
-              data-test-id={`${item.toLocaleLowerCase()}-link`}
-              href={`/${
-                item === 'Home'
-                  ? '/'
-                  : item.toLocaleLowerCase().split(' ').join('')
-              }`}
-            >
-              <Button variant="nav"> {item} </Button>
-            </Link>
-          ))}
-        </Hide>
+        <HStack as="nav" spacing="5">
+          <Hide below="md">
+            {links.map((item) => (
+              <Link
+                textDecoration="none"
+                key={`nav-${item}`}
+                as={NextLink}
+                data-test-id={`${item.toLocaleLowerCase()}-link`}
+                href={`/${
+                  item === 'Home'
+                    ? '/'
+                    : item.toLocaleLowerCase().split(' ').join('')
+                }`}
+              >
+                <Button variant="nav"> {item} </Button>
+              </Link>
+            ))}
+          </Hide>
 
-        <Link as={NextLink} href="/mycart">
-          <ShoppingCartIcon />
-        </Link>
-        <DrakLightMode />
-      </HStack>
-    </Flex>
+          <Link as={NextLink} href="/mycart">
+            <ShoppingCartIcon />
+          </Link>
+          <DrakLightMode />
+        </HStack>
+      </Flex>
+      <Divider />
+    </VStack>
   );
 }
 
