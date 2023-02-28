@@ -8,7 +8,7 @@ import * as dotenv from 'dotenv'; // see https://github.com/motdotla/dotenv#how-
 //   const allProducts = await getAllProducts();
 //   res.status(200).json(allProducts);
 // }
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 // import type { NextApiRequest, NextApiResponse } from 'next';
 import postgres from 'postgres';
 
