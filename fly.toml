@@ -1,11 +1,16 @@
-# fly.toml file generated for next-ecom on 2023-02-22T16:53:04+01:00
+# fly.toml file generated for com-e on 2023-04-06T14:36:53+02:00
 
-app = "next-ecom"
+app = "com-e"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
 [env]
+  PGDATABASE = "postgres"
+  PGHOST = "db.absvumqnuaoxlowctwij.supabase.co"
+  PGPASSWORD = "Ma0902044Ma#"
+  PGPORT = "6543"
+  PGUSERNAME = "postgres"
 
 [experimental]
   auto_rollback = true

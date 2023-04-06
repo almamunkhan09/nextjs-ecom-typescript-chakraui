@@ -1,6 +1,6 @@
 
 # Node version
-FROM node:16-alpine as build
+FROM node:18-alpine as build
 ENV NODE_ENV production
 
 RUN apk update
@@ -22,7 +22,7 @@ RUN yarn install --frozen-lockfile
 RUN yarn build
 
 # Production image, copy all the files and run next
-FROM node:16-alpine AS runner
+FROM node:18-alpine AS runner
 ENV NODE_ENV production
 WORKDIR /app
 

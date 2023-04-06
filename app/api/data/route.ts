@@ -1,28 +1,29 @@
-import * as dotenv from 'dotenv'; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
-// export default async function handler(
-//   req: NextApiRequest,
-//   res: NextApiResponse<postgres.Row[]>,
-// ) {
-//   const { method, query } = req;
-//   console.log(req.method, req.query);
-//   const allProducts = await getAllProducts();
-//   res.status(200).json(allProducts);
-// }
-import { NextResponse } from 'next/server';
-// import type { NextApiRequest, NextApiResponse } from 'next';
+import * as dotenv from 'dotenv';
+import { NextRequest, NextResponse } from 'next/server';
 import postgres from 'postgres';
 
 dotenv.config();
 
+type Products = {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  image: string;
+  stock: number;
+}[];
+
 const sql = postgres();
 async function getAllProducts() {
-  const allProducts = await sql`SELECT * FROM products`;
+  const allProducts = await sql<Products>`SELECT * FROM products`;
   return allProducts;
 }
 
-export async function GET() {
-  // const { searchParams } = new URL(request.url);
+export async function GET(
+  req: NextRequest,
+  res: NextResponse,
+): Promise<NextResponse> {
   const allProducts = await getAllProducts();
-
+  console.log(allProducts);
   return NextResponse.json(allProducts);
 }
