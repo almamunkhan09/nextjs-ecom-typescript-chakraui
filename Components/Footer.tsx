@@ -1,12 +1,4 @@
-import {
-  Divider,
-  Flex,
-  HStack,
-  Link,
-  Spacer,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
+import { Flex, HStack, Link, Spacer, Text } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import React from 'react';
 import { FaLinkedin, FaTwitter, FaYoutube } from 'react-icons/fa';
