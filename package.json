@@ -22,6 +22,7 @@
     "js-cookie": "^3.0.1",
     "next": "^13.2.0",
     "patch-package": "^6.5.1",
+    "pg": "^8.10.0",
     "postgres": "^3.3.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
