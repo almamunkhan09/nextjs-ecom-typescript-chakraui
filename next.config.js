@@ -13,13 +13,16 @@ const nextConfig = {
       },
     ],
   },
-  // typescript: {
-  //   // !! WARN !!
-  //   // Dangerously allow production builds to successfully complete even if
-  //   // your project has type errors.
-  //   // !! WARN !!
-  //   ignoreBuildErrors: true,
-  // },
+  redirects: async () => {
+    const redirects = [
+      {
+        source: '/',
+        destination: '/products',
+        permanent: true,
+      },
+    ];
+    return await redirects;
+  },
 };
 
 module.exports = nextConfig;
