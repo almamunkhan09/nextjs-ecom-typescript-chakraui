@@ -1,6 +1,6 @@
 'use client';
 import GenerateProductCard from '@/Components/GenerateProductCard';
-// import { products } from '@/products';
+import { products } from '@/products';
 import { Center, Heading, SimpleGrid, Spinner, Stack } from '@chakra-ui/react';
 import axios from 'axios';
 import React from 'react';
@@ -24,12 +24,12 @@ type Product = {
 };
 
 function ProductsPage() {
-  const [products, setProducts] = React.useState<Product[] | null>(null);
-  React.useEffect(() => {
-    getAllProducts()
-      .then((data) => setProducts(data))
-      .catch((err) => err);
-  }, []);
+  // const [products, setProducts] = React.useState<Product[] | null>(null);
+  // React.useEffect(() => {
+  //   getAllProducts()
+  //     .then((data) => setProducts(data))
+  //     .catch((err) => err);
+  // }, []);
   if (!products) {
     return (
       <Center alignItems="center" height="100vh">

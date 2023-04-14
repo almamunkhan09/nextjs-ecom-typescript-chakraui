@@ -33,6 +33,7 @@ export default function GenerateProductCard(singleProduct: Product) {
       href={`/products/${singleProduct.id}`}
       data-test-id={`product-${singleProduct.id}`}
       textDecoration="none"
+      style={{ textDecoration: 'none' }}
     >
       <Card maxW="sm">
         <CardBody>
@@ -48,16 +49,16 @@ export default function GenerateProductCard(singleProduct: Product) {
             <Heading size="md">{singleProduct.title}</Heading>
 
             <Text color="blue.600" fontSize="2xl">
-              {singleProduct.price}
+              {singleProduct.price} &euro;
             </Text>
           </Stack>
         </CardBody>
         <Divider />
         <CardFooter>
           <ButtonGroup spacing="2">
-            <Button variant="solid" colorScheme="blue">
+            {/* <Button variant="solid" colorScheme="blue">
               Buy now
-            </Button>
+            </Button> */}
             <Button variant="ghost" colorScheme="blue">
               Add to cart
             </Button>
