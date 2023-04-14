@@ -48,7 +48,7 @@ function ProductDetails({ singleProduct }: Product) {
       </Text>
       <Stack justifySelf="start">
         <Heading variant="h6" mt={2}>
-          ${singleProduct.price}
+          &euro; {singleProduct.price}
         </Heading>
         <Text>500 Gram</Text>
       </Stack>

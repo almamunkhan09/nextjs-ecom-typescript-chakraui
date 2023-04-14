@@ -95,10 +95,10 @@ const CartPage = () => {
                     <Text fontWeight="bold">
                       <span>&#215;</span>
                     </Text>
-                    <Text fontWeight="bold">${eachItem.price}</Text>
+                    <Text fontWeight="bold"> &euro;{eachItem.price}</Text>
                   </HStack>
                   <Heading size="sm" textAlign="end">
-                    $ {(eachItem.price * eachItem.quantity).toFixed(2)}
+                    &euro; {(eachItem.price * eachItem.quantity).toFixed(2)}
                   </Heading>
                   <DeleteIcon
                     onClick={() => {
